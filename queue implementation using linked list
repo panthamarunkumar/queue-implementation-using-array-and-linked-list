@@ -1,0 +1,88 @@
+#queue implementation using linked list
+#include <iostream>
+
+using namespace std;
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *front=0;
+struct node *rear=0;
+void enqueue(int data)
+{
+    struct node *new_node;
+    new_node=(struct node*)malloc(sizeof(struct node));
+    new_node->data=data;
+    new_node->next=NULL;
+    if(front==0&&rear==0)
+    {
+        front=rear=new_node;
+    }
+    else
+    {
+       rear->next=new_node;
+       rear=new_node;
+        
+        
+    }
+}
+void dqueue()
+{
+    struct node *temp;
+    temp=front;
+    if(front==0&&rear==0)
+    {
+        cout<<"empty queue";
+        
+    }
+    else
+    {
+        cout<<"deleted element is :"<<front->data;
+        cout<<"\n";
+        front=front->next;
+        free(temp);
+    }
+}
+void peek()
+{
+    cout<<"front node id "<<front->data;
+}
+void display()
+{
+
+if(front==0&&rear==0)
+{
+    cout<<"empty queue";
+    
+}
+else
+{
+    struct node *ptr;
+    ptr=front;
+    while(ptr!=NULL)
+    {
+        cout<<ptr->data<< " ";
+        cout<<"\n";
+        ptr=ptr->next;
+        
+        
+    }
+}
+}
+int main()
+{
+    enqueue(2);
+    enqueue(4);
+    enqueue(6);
+    enqueue(8);
+    cout<<"the queue before deletion is :";
+    display();
+    dqueue();
+    dqueue();
+     cout<<"the queue after deletion is :";
+    display();
+    peek();
+     //display();
+}
