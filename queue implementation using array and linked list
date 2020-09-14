@@ -1,0 +1,76 @@
+# queue-implementation-using-array
+#include<iostream>
+using namespace std;
+#define SIZE 7
+int queue[SIZE];
+int front=-1;
+int rear=-1;
+void enqueue(int x)
+{
+    if(rear==SIZE-1)
+    {
+        cout<<"THE QUEUE IS FULL";
+        
+    }
+    else if(front==-1&&rear==-1)
+        {
+            front=rear=0;
+            queue[rear]=x;
+        }
+        else
+        {
+            rear++;
+            queue[rear]=x;
+            
+        }
+    
+}
+void dequeue()
+{
+    if(front==-1&&rear==-1)
+    {
+        cout<<"THE QUEUE IS EMPTY";
+        
+    }
+    else if(front==rear){
+        front=rear=-1;
+    }
+    else
+    {
+       // cout<<"THE DELETED ELEMENT IS",<< queue[front];
+        front++;
+    }
+}
+void peek()
+{
+    cout<<"THE FRONT ELEMENT IS "<< queue[front] <<endl;
+}
+void display()
+{
+    int i;
+    if(front==-1&&rear==-1)
+    {
+        cout<<"empty";
+        
+    }
+    else
+    {  for(i=front;i<rear+1;i++)
+      cout<<queue[i]<<" ";
+         cout<<endl;
+    }
+}
+int main()
+{
+    enqueue(3);
+    enqueue(4);
+    enqueue(8);
+    cout<<"THE ELEMENT BEFORTE DELETION";
+    display();
+    peek();
+    dequeue();
+     dequeue();
+      dequeue();
+      display();
+    
+}
+
